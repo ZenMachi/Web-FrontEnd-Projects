@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+
+  background-color: #fafdfb;
+
+  display: flex;
+  flex-direction: column;
+}
+header.navbar-container {
+  width: 100%;
+  align-items: center;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-around;
+
+  padding-block: 1rem;
+  z-index: 999;
+}
+
+header.navbar-container .nav-list ul {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+header.navbar-container .nav-list li {
+  list-style-type: none;
+}
+
+header.navbar-container .nav-list li a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #011d34;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+header.navbar-container .nav-list li .selected {
+  border-radius: 24px;
+  background-color: #d0e4ff;
+}
+
+.selected {
+  border-radius: 24px;
+  background-color: #d0e4ff;
+}
+
+header.navbar-container .nav-list li a:hover {
+  border-radius: 24px;
+  background-color: #cce8e5;
+}
+
+main {
+  width: 100%;
+  margin-inline: auto;
+  /* padding: 8rem 4rem; */
+  padding-top: 8rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 2rem;
+}
+
+#home {
+  height: 100vh;
+}
+#work {
+  height: 100vh;
+}
+#about {
+  height: 100vh;
+}
+
+main .content {
+  height: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+main .content .content-description .title {
+  font-size: 3rem;
+  margin-block: 1rem;
+}
+
+main .content .content-description p {
+  font-size: 1.5rem;
+  max-width: 600px;
+  padding-right: 3rem;
+}
+
+main .content .content-image img {
+  margin: auto;
+  width: 560px;
+  min-width: 480px;
+  border-radius: 24px;
+}
+
+main .portofolio {
+  width: 75%;
+  padding: 28px;
+  display: flex;
+  overflow: auto;
+  background-color: #dae5e3;
+  flex-direction: row;
+  justify-content: space-around;
+  border-radius: 24px;
+}
+
+main .portofolio .portofolio-img img {
+  width: 200px;
+  margin-right: 24px;
+  border-radius: 24px;
+}
+
+main .portofolio .portofolio-title {
+  width: 360px;
+}
+
+main .portofolio .portofolio-title h3 {
+  font-size: 1.5rem;
+}
+
+main .portofolio .portofolio-title p {
+  font-size: 1.3rem;
+}
+
+#work h2 {
+  font-size: 2.5rem;
+}
+
+#about {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+#about h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+#about .social-media {
+  height: 100vh;
+  display: flex;
+  /* background-color: red; */
+  justify-content: center;
+  align-items: center;
+}
+
+#about .social-media ul {
+  justify-content: space-around;
+  display: flex;
+  gap: 2rem 8rem;
+}
+
+#about .social-media li {
+  border-radius: 24px;
+  background-color: #cce8e5;
+  padding: 3rem;
+  list-style-type: none;
+}
+
+#about .social-media li a {
+  font-size: 6rem;
+  color: #051f1e;
+}
