@@ -4,6 +4,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -63,7 +65,6 @@ header.navbar-container .nav-list li a:hover {
 main {
   width: 100%;
   margin-inline: auto;
-  /* padding: 8rem 4rem; */
   padding-top: 8rem;
   padding-left: 4rem;
   padding-right: 4rem;
@@ -142,10 +143,13 @@ main .portofolio .portofolio-title p {
 #about {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
-
+main .content .content-image img {
+  margin: auto;
+  width: 560px;
+  min-width: 480px;
+  border-radius: 24px;
+}
 #about h2 {
   display: flex;
   justify-content: center;
@@ -155,7 +159,6 @@ main .portofolio .portofolio-title p {
 #about .social-media {
   height: 100vh;
   display: flex;
-  /* background-color: red; */
   justify-content: center;
   align-items: center;
 }
@@ -176,4 +179,82 @@ main .portofolio .portofolio-title p {
 #about .social-media li a {
   font-size: 6rem;
   color: #051f1e;
+}
+
+@media screen and (max-width: 1280px) {
+  #work {
+    height: auto;
+  }
+
+  #about .social-media ul {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about .social-media li {
+    border-radius: 24px;
+    background-color: #cce8e5;
+    padding: 3rem;
+    list-style-type: none;
+  }
+
+  #about .social-media li a {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header.navbar-container {
+    flex-direction: column;
+  }
+
+  #work {
+    height: auto;
+  }
+
+  #home .content {
+    flex-direction: column;
+  }
+
+  #home .content .content-image {
+    order: -1;
+  }
+
+  #home .content .content-image img {
+    width: 360px;
+    min-width: 180px;
+  }
+
+  #work .portofolio {
+    width: 100%;
+    padding: 28px;
+    display: flex;
+    overflow: auto;
+    background-color: #dae5e3;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 24px;
+  }
+
+  #work .portofolio .portofolio-title {
+    order: -1;
+  }
+
+  #about .social-media ul {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about .social-media li {
+    border-radius: 24px;
+    background-color: #cce8e5;
+    padding: 3rem;
+    list-style-type: none;
+  }
+
+  #about .social-media li a {
+    font-size: 3rem;
+  }
 }
