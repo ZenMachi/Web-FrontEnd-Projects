@@ -1,5 +1,7 @@
 const todos = [];
-const RENDER_EVENT = 'render_todo'
+const RENDER_EVENT = 'render_todo';
+const SAVED_EVENT = 'saved-todo';
+const STORAGE_KEY = 'TODO_APPS';
 
 document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('form');
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         todos.push(todoObject);
 
         document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
     }
 
     function generatedId() {
@@ -86,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         todoTarget.isCompleted = true;
         document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
     }
 
     function findTodo(todoId) {
@@ -104,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         todos.splice(todoTarget, 1);
         document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
     }
 
     function undoTaskFromCompleted(todoId) {
@@ -113,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         todoTarget.isCompleted = false;
         document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
     }
 
     function findTodoIndex(todoId) {
@@ -122,6 +128,37 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
+    function saveData() {
+        if(isStorageExist()) {
+            const parsed = JSON.stringify(todos);
+            localStorage.setItem(STORAGE_KEY, parsed);
+            document.dispatchEvent(new Event(SAVED_EVENT));
+        }
+    }
+
+    function isStorageExist() {
+        if(typeof (Storage) === undefined) {
+            alert('Browser kamu tidak mendukung local storage');
+            return false;
+        }
+        return true
+    }
+
+    function loadDataFromStorage() {
+        const serializedData = localStorage.getItem(STORAGE_KEY);
+        let data = JSON.parse(serializedData);
+
+        if(data !== null) {
+            for( const todo of data) {
+                todos
+            }
+        }
+    }
+
+    document.addEventListener(SAVED_EVENT, function () {
+        console.log(localStorage.getItem(STORAGE_KEY));
+    });
 
     document.addEventListener(RENDER_EVENT, function () {
     // console.log(todos);
@@ -133,11 +170,11 @@ document.addEventListener('DOMContentLoaded', function () {
     completedTODOList.innerHTML = '';
 
     for(const todoItem of todos) {
-        const todoELement = makeTodo(todoItem);
+        const todoElement = makeTodo(todoItem);
         if(!todoItem.isCompleted) {
-            uncompletedTODOList.append(todoELement);
+            uncompletedTODOList.append(todoElement);
         } else {
-            completedTODOList.append(todoELement)
+            completedTODOList.append(todoElement)
         }
     }});
 });
