@@ -169,7 +169,7 @@ for(const todoItem of todos) {
     if(!todoItem.isCompleted) {
         uncompletedTODOList.append(todoElement);
     } else {
-        completedTODOList.append(todoElement)
+        completedTODOList.append(todoElement);
     }
 }});
 
