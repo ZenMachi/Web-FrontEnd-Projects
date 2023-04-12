@@ -1,15 +1,31 @@
-const main = () => {
-  const searchElement = document.querySelector('#searchElement');
-  const buttonSearchElement = document.querySelector('#searchButtonElement');
-  const clubListElement = document.querySelector('#clubList');
+import DataSource from "../data/data-source.js";
 
-  const onButtonSearchClicked = () => {
-    const dataSource = new DataSource(renderResult, fallbackResult);
-    dataSource.searchClub(searchElement.value);
+const main = () => {
+  const searchElement = document.querySelector("#searchElement");
+  const buttonSearchElement = document.querySelector("#searchButtonElement");
+  const clubListElement = document.querySelector("#clubList");
+
+  const onButtonSearchClicked = async () => {
+    //
+    // const dataSource = new DataSource(renderResult, fallbackResult);
+    // dataSource.searchClub(searchElement.value);
+
+    // Callback Method
+
+    // DataSource.searchClub(searchElement.value)
+    //   .then(renderResult)
+    //   .catch(fallbackResult);
+    // Async Await Method
+    try {
+      const result = await DataSource.searchClub(searchElement.value);
+      renderResult(result);
+    } catch (message) {
+      fallbackResult(message);
+    }
   };
 
-  const renderResult = results => {
-    clubListElement.innerHTML = '';
+  const renderResult = (results) => {
+    clubListElement.innerHTML = "";
     results.forEach((club) => {
       // ES 5
       // const name = club.name;
@@ -17,10 +33,10 @@ const main = () => {
       // const description = club.description;
 
       //ES 6
-      const {name, fanArt, description} = club;
+      const { name, fanArt, description } = club;
 
-      const clubElement = document.createElement('div');
-      clubElement.setAttribute('class', 'club');
+      const clubElement = document.createElement("div");
+      clubElement.setAttribute("class", "club");
 
       clubElement.innerHTML = `<img class="fan-art-club" src="${fanArt}" alt="Fan Art">
           <div class="club-info">
@@ -31,10 +47,12 @@ const main = () => {
     });
   };
 
-  const fallbackResult = message => {
-    clubListElement.innerHTML = '';
+  const fallbackResult = (message) => {
+    clubListElement.innerHTML = "";
     clubListElement.innerHTML += `<h2 class="placeholder">${message}</h2>`;
   };
 
-  buttonSearchElement.addEventListener('click', onButtonSearchClicked);
+  buttonSearchElement.addEventListener("click", onButtonSearchClicked);
 };
+
+export default main;
