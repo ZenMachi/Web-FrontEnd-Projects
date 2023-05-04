@@ -1,28 +1,25 @@
 function main() {
+  const baseUrl = "https://books-api.dicoding.dev";
+
   const getBook = () => {
     // tuliskan kode di sini!
-    const xhr = new XMLHttpRequest();
-
-    //menetapkan callback jika response sukses dan error
-    xhr.onload = function () {
-      const responseJson = JSON.parse(this.responseText);
-
-      if (responseJson.error) {
-        showResponseMessage(responseJson.message);
-      } else {
-        renderAllBooks(responseJson.books);
-      }
-    };
-
-    xhr.onerror = function () {
-      showResponseMessage();
-    };
-
-    xhr.open("GET", "https://books-api.dicoding.dev/list");
-
-    xhr.send();
+    fetch(`${baseUrl}/list`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJson) => {
+        if (responseJson.error) {
+          showResponseMessage(responseJson.message);
+        } else {
+          renderAllBooks(responseJson.books);
+        }
+      })
+      .catch((error) => {
+        showResponseMessage(error);
+      });
   };
 
+  //INTERNAL SERVER ERROR ON POSTMAN AND CORS PROBLEM ON LOCALHOST
   const insertBook = (book) => {
     // tuliskan kode di sini!
     //Membuat instance dari XMLHttpRequest
