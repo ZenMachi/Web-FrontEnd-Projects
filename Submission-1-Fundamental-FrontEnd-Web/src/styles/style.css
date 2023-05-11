@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
+  scroll-behavior: smooth;
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
+.image-pokemon {
+  max-width: 300px;
+}
