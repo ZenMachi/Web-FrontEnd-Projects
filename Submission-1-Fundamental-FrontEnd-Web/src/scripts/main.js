@@ -44,7 +44,7 @@ const fetchPokemon = () => {
 
 const searchPokemon = () => {
   const pokeArray = [];
-  const url = `${baseUrl}${searchElement.value}`;
+  const url = `${baseUrl}${searchElement.value.toLowerCase()}`;
   pokeArray.push(fetch(url).then((response) => response.json()));
 
   Promise.all(pokeArray).then((results) => {

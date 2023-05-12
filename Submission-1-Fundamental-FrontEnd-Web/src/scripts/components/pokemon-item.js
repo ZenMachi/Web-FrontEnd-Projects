@@ -17,7 +17,7 @@ class PokemonItem extends HTMLElement {
       }
       </style>
     
-        <div class="card rounded-4" style="background-color: purple">
+        <div class="card rounded-4 element-${this._pokemon.type}">
           <div class="card-body">
             <img
               class="image-pokemon card-img rounded mx-auto d-block"
@@ -25,7 +25,7 @@ class PokemonItem extends HTMLElement {
               alt=""
             />
             <h5 class="text-capitalize">Name\u2003: ${this._pokemon.name}</h5>
-            <h5 class="text-capitalize">Type\u2003: ${this._pokemon.type}</h5>
+            <h5 class="text-capitalize">Type\u2002\u2003: ${this._pokemon.type}</h5>
           </div>
         </div>
       `;
