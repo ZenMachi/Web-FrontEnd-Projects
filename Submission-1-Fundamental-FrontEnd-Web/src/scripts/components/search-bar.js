@@ -1,7 +1,6 @@
 class SearchBar extends HTMLElement {
   constructor() {
     super();
-    // this.shadowDOM = this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
@@ -19,7 +18,7 @@ class SearchBar extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <<div id="search-container" class="d-flex justify-content-around">
+      <div id="search-container" class="d-flex justify-content-around">
       <input
         class="form-control w-75 me-4"
         placeholder="Search Pokemon Here"
@@ -32,11 +31,9 @@ class SearchBar extends HTMLElement {
       </button>
     </div>`;
 
-    // document.getElementById("btnSearch").onclick = console.log("clicked")
-
     this.querySelector("#btnSearch").addEventListener(
       "click",
-      console.log("clicked")
+      this._clickEvent
     );
   }
 }
