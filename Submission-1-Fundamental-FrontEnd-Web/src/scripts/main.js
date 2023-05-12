@@ -4,7 +4,7 @@ import "../scripts/components/search-bar.js";
 const baseUrl = `https://pokeapi.co/api/v2/pokemon/`;
 const searchElement = document.querySelector("search-bar");
 
-function main() {
+const main = () => {
   fetchPokemon();
   document.addEventListener("DOMContentLoaded", () => {
     searchElement.clickEvent = function () {
@@ -15,7 +15,7 @@ function main() {
       }
     };
   });
-}
+};
 
 const fetchPokemon = () => {
   const pokeArray = [];
