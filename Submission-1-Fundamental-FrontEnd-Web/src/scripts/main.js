@@ -2,13 +2,18 @@ import "../scripts/components/pokemon-list.js";
 import "../scripts/components/search-bar.js";
 
 const baseUrl = `https://pokeapi.co/api/v2/pokemon/`;
+const searchElement = document.querySelector("search-bar");
 
 function main() {
   fetchPokemon();
   document.addEventListener("DOMContentLoaded", () => {
-    const searchElement = document.querySelector("search-bar");
     searchElement.clickEvent = function () {
-      searchPokemon();
+      // searchPokemon();
+      if (!searchElement.value == null || !searchElement.value == "") {
+        searchPokemon();
+      } else {
+        alert("This Can't be Empty");
+      }
     };
     // const searchElement = document.getElementById("btnSearch");
     // searchElement.addEventListener("click", function () {
@@ -29,7 +34,7 @@ const fetchPokemon = () => {
       name: data.name,
       id: data.id,
       image: data.sprites["front_default"],
-      type: data.types.map((types) => types.type.name).join(", "),
+      type: data.types[0].type.name,
     }));
     // console.log(pokemon);
     displayPokemon(pokemon);
@@ -39,7 +44,6 @@ const fetchPokemon = () => {
 
 const searchPokemon = () => {
   const pokeArray = [];
-  const searchElement = document.querySelector("search-bar");
   const url = `${baseUrl}${searchElement.value}`;
   pokeArray.push(fetch(url).then((response) => response.json()));
 
@@ -51,8 +55,8 @@ const searchPokemon = () => {
       type: data.types.map((types) => types.type.name).join(", "),
     }));
     // console.log(pokemon);
+
     displayPokemon(pokemon);
-    // displayPokemon(pokemon);
   });
 
   // const pokeArray = [];

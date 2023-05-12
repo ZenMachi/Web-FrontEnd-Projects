@@ -17,7 +17,7 @@ class PokemonItem extends HTMLElement {
       }
       </style>
     
-        <div class="card rounded-4">
+        <div class="card rounded-4" style="background-color: purple">
           <div class="card-body">
             <img
               class="image-pokemon card-img rounded mx-auto d-block"
