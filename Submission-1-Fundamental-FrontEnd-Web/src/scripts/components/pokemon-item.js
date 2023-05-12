@@ -1,7 +1,6 @@
 class PokemonItem extends HTMLElement {
   constructor() {
     super();
-    // this.shadowDOM = this.attachShadow({ mode: "open" });
   }
 
   set pokemon(pokemon) {
