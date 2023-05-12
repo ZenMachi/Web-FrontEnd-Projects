@@ -45,7 +45,7 @@ const searchPokemon = () => {
       name: data.name,
       id: data.id,
       image: data.sprites["front_default"],
-      type: data.types.map((types) => types.type.name).join(", "),
+      type: data.types[0].type.name,
     }));
     displayPokemon(pokemon);
   });
