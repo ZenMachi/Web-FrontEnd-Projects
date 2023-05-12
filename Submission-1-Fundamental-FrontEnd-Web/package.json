@@ -7,10 +7,11 @@
     "start-dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
-  "author": "",
+  "author": "ZenMachi",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
