@@ -1,14 +1,8 @@
-self.addEventListener("install", () => {
-  console.log("Service Worker: Installed");
-  self.skipWaiting();
-});
+import { precacheAndRoute } from "workbox-precaching";
 
-self.addEventListener("activate", () => {
-  console.log("Service Worker: Activated");
-});
+// Do precaching
+precacheAndRoute(self.__WB_MANIFEST);
 
-self.addEventListener("fetch", (event) => {
-  console.log("Service Worker: Fetching");
-
-  event.respondWith(fetch(event.request));
+self.addEventListener("push", (event) => {
+  console.log("Service Worker: Pushed");
 });
