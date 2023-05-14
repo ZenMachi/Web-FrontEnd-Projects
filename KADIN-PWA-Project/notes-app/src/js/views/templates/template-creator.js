@@ -1,4 +1,4 @@
-import { convertToFormattedDate } from '../../utils/utils';
+import { convertToFormattedDate } from "../../utils/utils";
 
 const unauthenticatedNavListTemplate = (userInfo) => `
   <ul class="nav justify-content-center align-items-center">
@@ -15,6 +15,9 @@ const authenticatedNavListTemplate = (userInfo) => `
   <ul class="nav justify-content-center align-items-center">
     <li class="nav-item">
       <a class="nav-link" href="#/">Beranda</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#/bookmark">Bookmark</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#/note/create">Tambah</a>
@@ -45,7 +48,7 @@ const authenticatedNavListTemplate = (userInfo) => `
   </ul>
 `;
 
-const noteItemTemplate = (note) => `
+const noteItemTemplate = (note, bookmarkButton) => `
   <div class="card h-100">
     <div class="card-body">
       <h5 class="card-title">${note.title}</h5>
@@ -53,6 +56,7 @@ const noteItemTemplate = (note) => `
       <span class="text-muted">${convertToFormattedDate(note.createdAt)}</span>
       <p class="card-text">${note.body}</p>
       <div class="mt-3 d-flex gap-2 justify-content-end align-items-end">
+        ${bookmarkButton}
         <button 
           id="deleteNoteButton" 
           data-id="${note.id}" 
@@ -73,9 +77,46 @@ const createNoteListEmptyTemplate = () => {
   `;
 };
 
+const bookmarkNoteItemTemplate = (note, bookmarkButton) => `
+  <div class="card h-100">
+    <div class="card-body">
+      <h5 class="card-title">${note.title}</h5>
+      <span class="text-muted">${note.owner}</span> | 
+      <span class="text-muted">${convertToFormattedDate(note.createdAt)}</span>
+      <p class="card-text">${note.body}</p>
+      <div class="mt-3 d-flex gap-2 justify-content-end align-items-end">
+        ${bookmarkButton}
+      </div>
+    </div>
+  </div>
+`;
+
+const createBookmarkButtonTemplate = (noteId) => {
+  return `
+    <button
+      id="bookmarkButton"
+      class="btn btn-primary"
+      data-id="${noteId}"
+    >Bookmark</button>
+  `;
+};
+
+const createRemoveBookmarkButtonTemplate = (noteId) => {
+  return `
+    <button
+      id="removeBookmarkButton"
+      class="btn btn-danger"
+      data-id="${noteId}"
+    >Remove Bookmark</button>
+  `;
+};
+
 export {
   authenticatedNavListTemplate,
   unauthenticatedNavListTemplate,
   noteItemTemplate,
   createNoteListEmptyTemplate,
+  bookmarkNoteItemTemplate,
+  createBookmarkButtonTemplate,
+  createRemoveBookmarkButtonTemplate,
 };
